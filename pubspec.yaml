@@ -46,6 +46,7 @@ dependencies:
   flutter_localization: ^0.4.1
   path_provider: ^2.1.6
   permission_handler: ^13.0.2
+  record: ^7.1.1
 
 dev_dependencies:
   flutter_test:

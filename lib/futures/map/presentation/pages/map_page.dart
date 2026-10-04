@@ -22,12 +22,16 @@ class _MapPageState extends State<MapPage> {
   void initState() {
     super.initState();
     _addMarkerAtCairoLocation();
+    _goToMarker(const LatLng(30.0626, 31.2497));
   }
 
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Map Page'),
+      ),
       body: Center(
         child: GoogleMap(
           mapType: MapType.normal,
@@ -104,6 +108,15 @@ class _MapPageState extends State<MapPage> {
         zoom: 16,
       );
     }
+  }
+
+  Future<void> _goToMarker(LatLng latLng) async {
+    final controller = await _mapController.future;
+    controller.animateCamera(CameraUpdate.newLatLngZoom(latLng, 16));
+    _cameraPosition = CameraPosition(
+      target: latLng,
+      zoom: 4,
+    );
   }
 
   Future<void> _clearMarkers() async {
