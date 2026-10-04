@@ -6,7 +6,11 @@ plugins {
 
 android {
     namespace = "com.example.flutterdevicefeatures_miniproject"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk {
+        version = release(37) {
+            minorApiLevel = 0
+        }
+    }
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
